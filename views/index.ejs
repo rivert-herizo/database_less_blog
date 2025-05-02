@@ -1,0 +1,67 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container">
+    <div class="row">
+      <div class="col d-none d-lg-block">
+      </div>
+      <div class="col">
+        <% if(locals.posts)  { %>
+            <% posts.forEach((post, id) => { %>
+                <div class="card mb-3">
+                    <div class="card-header">
+                      <%= post.title %>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text"><%= post.content %></p>
+                      <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<%- id %>">
+                            Edit post
+                        </button>
+                    </div>
+                </div>
+                
+                
+                <!-- Modal -->
+                <div class="modal fade" id="editModal<%- id %>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/edit" method="POST">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Post title</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter the title of your post" name="edit-title" value="<%= post.title%>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Post content</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="edit-content"><%= post.content %></textarea>
+                                </div>
+                                <input type="hidden" name="id" value="<%= id %>">
+                        
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                            </div>
+                        
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <h1 class="display-1">No post to display baby sorry.</h1>
+        <% } %>
+      </div>
+      <div class="col d-none d-lg-block">
+      </div>
+    </div>
+</div>
+
+
+
+
+<%- include('partials/footer.ejs') %>
