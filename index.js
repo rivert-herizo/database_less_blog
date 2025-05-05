@@ -35,6 +35,15 @@ app.post('/edit', (req, res) => {
     res.render("index.ejs", {posts: blog_posts});
 })
 
+app.post('/delete', (req, res) => {
+    const id = Number(req.body['delete_id']);
+
+    
+    delete blog_posts[id];
+
+    res.render("index.ejs", {posts: blog_posts});
+})
+
 app.listen(port, () => {
     console.log(`The server is running on port ${port}`);
 })

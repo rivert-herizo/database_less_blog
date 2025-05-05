@@ -14,9 +14,16 @@
                     <div class="card-body">
                       <p class="card-text"><%= post.content %></p>
                       <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<%- id %>">
-                            Edit post
-                        </button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editModal<%- id %>">
+                                Edit post
+                            </button>
+                            <form action="/delete" method="post">
+                                <input type="hidden" name="delete_id" value="<%= id %>">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        
                     </div>
                 </div>
                 
