@@ -9,7 +9,7 @@
             <% posts.forEach((post, id) => { %>
                 <div class="card mb-3">
                     <div class="card-header">
-                      <%= post.title %>
+                      <b><%= post.title %></b>
                     </div>
                     <div class="card-body">
                       <p class="card-text"><%= post.content %></p>
@@ -33,7 +33,9 @@
                     <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="editModalLabel">Edit post
+                            This is an edit
+                        </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

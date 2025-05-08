@@ -10,7 +10,6 @@ app.use(express.static("public"));
 var blog_posts = [{title:"This is post 1", content: "This is content 1"}, {title:"This is post 2", content: "This is content 2"}];
 
 app.get('/', (req, res) => {
-    console.log(blog_posts)
     res.render('index.ejs', {posts : blog_posts });
 });
 
